@@ -1,5 +1,113 @@
 dofile("optimizer-lib.lua")
 
+local pkmn_list = {}
+local trophy_type = "Poison"
+local trophy_type_only = {
+    type1 = trophy_type,
+    type2 = nil
+}
+local steel_trophy_type = {
+    type1 = trophy_type,
+    type2 = "Steel"
+}
+local fight_trophy_type = {
+    type1 = trophy_type,
+    type2 = "Fighting"
+}
+local dragon_trophy_type = {
+    type1 = trophy_type,
+    type2 = "Dragon"
+}
+local water_trophy_type = {
+    type1 = trophy_type,
+    type2 = "Water"
+}
+local electric_trophy_type = {
+    type1 = trophy_type,
+    type2 = "Electric"
+}
+local fairy_trophy_type = {
+    type1 = trophy_type,
+    type2 = "Fairy"
+}
+local fire_trophy_type = {
+    type1 = trophy_type,
+    type2 = "Fire"
+}
+local bug_trophy_type = {
+    type1 = trophy_type,
+    type2 = "Bug"
+}
+local normal_trophy_type = {
+    type1 = trophy_type,
+    type2 = "Normal"
+}
+local grass_trophy_type = {
+    type1 = trophy_type,
+    type2 = "Grass"
+}
+local psychic_trophy_type = {
+    type1 = trophy_type,
+    type2 = "Psychic"
+}
+local rock_trophy_type = {
+    type1 = trophy_type,
+    type2 = "Rock"
+}
+local ground_trophy_type = {
+    type1 = trophy_type,
+    type2 = "Ground"
+}
+local ghost_trophy_type = {
+    type1 = trophy_type,
+    type2 = "Ghost"
+}
+local dark_trophy_type = {
+    type1 = trophy_type,
+    type2 = "Dark"
+}
+local flying_trophy_type = {
+    type1 = trophy_type,
+    type2 = "Flying"
+}
+
+table.insert(pkmn_list, dragon_trophy_type)
+table.insert(pkmn_list, bug_trophy_type)
+pkmn_list[#pkmn_list].legen = true
+table.insert(pkmn_list, dragon_trophy_type)
+table.insert(pkmn_list, fairy_trophy_type)
+table.insert(pkmn_list, ghost_trophy_type)
+
+table.insert(pkmn_list, psychic_trophy_type)
+table.insert(pkmn_list, ghost_trophy_type)
+table.insert(pkmn_list, dragon_trophy_type)
+table.insert(pkmn_list, steel_trophy_type)
+table.insert(pkmn_list, ghost_trophy_type)
+
+table.insert(pkmn_list, ghost_trophy_type)
+table.insert(pkmn_list, ghost_trophy_type)
+pkmn_list[#pkmn_list].legen = true
+table.insert(pkmn_list, ground_trophy_type)
+table.insert(pkmn_list, ghost_trophy_type)
+pkmn_list[#pkmn_list].legen = true
+table.insert(pkmn_list, ground_trophy_type)
+
+table.insert(pkmn_list, ground_trophy_type)
+table.insert(pkmn_list, ground_trophy_type)
+table.insert(pkmn_list, ghost_trophy_type)
+pkmn_list[#pkmn_list].legen = true
+table.insert(pkmn_list, ground_trophy_type)
+table.insert(pkmn_list, ghost_trophy_type)
+
+table.insert(pkmn_list, ghost_trophy_type)
+table.insert(pkmn_list, rock_trophy_type)
+table.insert(pkmn_list, fairy_trophy_type)
+table.insert(pkmn_list, dragon_trophy_type)
+table.insert(pkmn_list, ghost_trophy_type)
+
+table.insert(pkmn_list, trophy_type_only)
+pkmn_list[#pkmn_list].legen = true
+
 local base = 50
 
 local pokemon_types = {"Normal", "Fire", "Water", "Electric", "Grass", "Ice", "Fighting", "Poison", "Ground", "Flying",
@@ -105,72 +213,8 @@ function calc(level_attacker, level_defender, para_attacker, burn_attacker, pois
     return gap
 end
 
--- Récupération des arguments de ligne de commande
-local level_attacker = tonumber(arg[1])
-local level_defender = tonumber(arg[2])
-local para_attacker = arg[3] == "false"
-local burn_attacker = arg[4] == "false"
-local pois_attacker = arg[5] == "false"
-local gele_attacker = arg[6] == "false"
-local asle_attacker = arg[7] == "false"
-local para_defender = arg[8] == "false"
-local burn_defender = arg[9] == "false"
-local pois_defender = arg[10] == "false"
-local gele_defender = arg[11] == "false"
-local asle_defender = arg[12] == "false"
-local shin_attacker = arg[13] == "false"
-local shin_defender = arg[14] == "false"
-local lege_attacker = arg[15] == "false"
-local lege_defender = arg[16] == "false"
-local attacker = tonumber(arg[17])
-local defender = tonumber(arg[18])
-local attacker_2 = tonumber(arg[19])
-local defender_2 = tonumber(arg[20])
-
-level_attacker = 10
-level_defender = 10
-attacker = findIndex(pokemon_types, "Water")
-attacker_2 = nil
-defender = findIndex(pokemon_types, "Water")
-defender_2 = nil
-
-local resultat = calc(level_attacker, level_defender, para_attacker, burn_attacker, pois_attacker, gele_attacker,
-    asle_attacker, para_defender, burn_defender, pois_defender, gele_defender, asle_defender, shin_attacker,
-    shin_defender, lege_attacker, lege_defender, attacker, defender, attacker_2, defender_2)
-print("Probability attacker :", dump(resultat))
-
-
-local pkmn_list = {}
-local Gengar = {
-    type1 = "Poison",
-    type2 = "Ghost"
-}
-local Tentacool = {
-    type1 = "Poison",
-    type2 = "Water"
-}
-local Nidoking = {
-    type1 = "Poison",
-    type2 = "Ground"
-}
-local Nidorino = {
-    type1 = "Poison",
-    type2 = nil
-}
-table.insert(pkmn_list, Gengar)
-table.insert(pkmn_list, Gengar)
-table.insert(pkmn_list, Gengar)
-table.insert(pkmn_list, Gengar)
-table.insert(pkmn_list, Gengar)
-table.insert(pkmn_list, Gengar)
-table.insert(pkmn_list, Nidoking)
-table.insert(pkmn_list, Nidoking)
-table.insert(pkmn_list, Nidoking)
-table.insert(pkmn_list, Nidorino)
-table.insert(pkmn_list, Nidorino)
-
 -- Function to find the best type combo to beat the given list of Pokemon
-function findBestTypeCombo(pkmn_list)
+function findBestTypeCombo(pkmn_list, imposed_type)
     local best_attacker = nil
     local best_attacker_2 = nil
     local best_probability = 0
@@ -187,9 +231,23 @@ function findBestTypeCombo(pkmn_list)
                 for _, defender in ipairs(pkmn_list) do
                     local defender_type1 = findIndex(pokemon_types, defender.type1)
                     local defender_type2 = defender.type2 and findIndex(pokemon_types, defender.type2) or nil
-                    local result = calc(10, 10, false, false, false, false, false, false, false, false, false, false, false, false, false, false, attacker, defender_type1, attacker_2, defender_type2)
-                    probability = probability + result
-                    total_probability = total_probability + 1
+                    local defender_shiny = defender.shiny and findIndex(pokemon_types, defender.shiny) or false
+                    local defender_legen = defender.legen and findIndex(pokemon_types, defender.legen) or false
+
+                    local result = calc(30, 30, false, false, false, false, false, false, false, false, false, false,
+                        false, defender_shiny, false, defender_legen, attacker, defender_type1, attacker_2,
+                        defender_type2)
+                    if imposed_type then
+                        -- Check if the attacker type matches the imposed type
+                        if attacker == findIndex(pokemon_types, imposed_type) or attacker_2 ==
+                            findIndex(pokemon_types, imposed_type) then
+                            probability = probability + result
+                            total_probability = total_probability + 1
+                        end
+                    else
+                        probability = probability + result
+                        total_probability = total_probability + 1
+                    end
                 end
 
                 probability = probability / total_probability
@@ -208,7 +266,7 @@ function findBestTypeCombo(pkmn_list)
 end
 
 -- Example usage
-local best_attacker, best_attacker_2, best_probability = findBestTypeCombo(pkmn_list)
+local best_attacker, best_attacker_2, best_probability = findBestTypeCombo(pkmn_list, trophy_type)
 print("Best attacker type:", pokemon_types[best_attacker])
 if best_attacker_2 then
     print("Best attacker type 2:", pokemon_types[best_attacker_2])
