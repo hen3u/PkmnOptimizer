@@ -46,13 +46,41 @@ function calc(level_attacker, level_defender, para_attacker, burn_attacker, pois
     gap = gap + (gele_defender and 10 or 0)
     gap = gap + (asle_defender and 5 or 0)
 
-    -- Shiny
-    gap = gap + (shin_attacker and 10 or 0)
-    gap = gap - (shin_defender and 10 or 0)
+    -- Shiny, Legendary, Mega, Primo, Chimera
+    local bonus = 0
+    if shin_attacker then
+        bonus = bonus + (shin_attacker and 10 or 0)
+    end
+    if lege_attacker then
+        bonus = bonus + (lege_attacker and 10 or 0)
+    end
+    if mega_attacker then
+        bonus = bonus + (mega_attacker and 10 or 0)
+    end
+    if primo_attacker then
+        bonus = bonus + (primo_attacker and 10 or 0)
+    end
+    if chime_attacker then
+        bonus = bonus + (chime_attacker and 10 or 0)
+    end
+    bonus = math.min(bonus, 20)
+    gap = gap + bonus
 
-    -- Legendary
-    gap = gap + (lege_attacker and 10 or 0)
-    gap = gap - (lege_defender and 10 or 0)
+    if shin_defender then
+        gap = gap - (shin_defender and 10 or 0)
+    end
+    if lege_defender then
+        gap = gap - (lege_defender and 10 or 0)
+    end
+    if mega_defender then
+        gap = gap - (mega_defender and 10 or 0)
+    end
+    if primo_defender then
+        gap = gap - (primo_defender and 10 or 0)
+    end
+    if chime_defender then
+        gap = gap - (chime_defender and 10 or 0)
+    end
 
     -- Type 1 attacker vs type 1 defender
     if types[defender][attacker] == 2 then
